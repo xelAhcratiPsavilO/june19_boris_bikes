@@ -3,5 +3,5 @@
 ## Objectives
 
 - TDD a project.
-- Fluently program in Ruby
-- Debug
+- Show fluency programming in Ruby.
+- Debug anything.
