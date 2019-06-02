@@ -9,4 +9,9 @@ describe DockingStation do
     expect(bike).to be_working
   end
 
+  it "stores a bike" do
+    bike = subject.release_bike
+    expect(subject.dock(bike)).to eq bike
+  end
+
 end
