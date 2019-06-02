@@ -7,7 +7,7 @@ describe DockingStation do
 
   describe '#dock(bike)' do
     it 'raises an error if there is already a bike docked' do
-      DockingStation::DEFAULT_CAPACITY.times { subject.dock(bike) }
+      subject.capacity.times { subject.dock(bike) }
       expect{ subject.dock(bike) } .to raise_error 'station at full capacity'
     end
     it 'stores a bike' do
@@ -15,10 +15,16 @@ describe DockingStation do
     end
   end
 
-  describe '#bike' do
-    it 'access an object store under intance variable @bike' do
+  describe '#bikes' do
+    it 'access an array of objects store under instance variable @bikes' do
       subject.dock(bike)
       expect(subject.bikes).to eq [bike]
+    end
+  end
+
+  describe '#capacity' do
+    it 'access integer under instance variable @capacity' do
+      expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
     end
   end
 
