@@ -27,6 +27,11 @@ As a member of the public
 So I can decide whether to use the docking station
 I want to see a bike that has been docked
 ```
+```
+As a member of the public,
+So that I am not confused and charged unnecessarily,
+I'd like docking stations not to release bikes when there are none available.
+```
 
 ### Functional representation of the stories
 
@@ -43,6 +48,7 @@ DockingStation | :bike
 CLASS              METHOD            OUTPUT  
 Bike           --> working?      --> true/false
 DockingStation --> release_bike  --> Bike.new
+DockingStation --> release_bike  --> - guard condition to return nothing when no bikes available
 DockingStation --> dock(bike)    --> bike stored in an instance variable
 DockingStation --> :bike         --> bike read from the instance variable
 ```
