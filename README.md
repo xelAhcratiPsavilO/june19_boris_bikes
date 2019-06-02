@@ -60,6 +60,6 @@ Bike           --> working?      --> true/false
 DockingStation --> release_bike  --> Bike.new
 DockingStation --> release_bike  --> - guard condition to return nothing when no bikes available
 DockingStation --> dock(bike)    --> bike stored in an instance variable
-DockingStation --> dock(bike)    --> - guard condition to prevent docking when capacity 20 has been reached
+DockingStation --> dock(bike)    --> - guard condition to prevent docking when default capacity has been reached
 DockingStation --> :bike         --> bike read from the instance variable
 ```
