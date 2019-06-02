@@ -12,4 +12,10 @@ describe DockingStation do
     expect(subject.dock(bike)).to eq bike
   end
 
+  it "access an object store under intance variable @bike" do
+    bike = subject.release_bike
+    subject.dock(bike)
+    expect(subject.bike).to eq bike
+  end
+
 end
