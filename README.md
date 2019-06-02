@@ -32,6 +32,11 @@ As a member of the public,
 So that I am not confused and charged unnecessarily,
 I'd like docking stations not to release bikes when there are none available.
 ```
+```
+As a maintainer of the system,
+So that I can control the distribution of bikes,
+I'd like docking stations not to accept more bikes than their capacity.
+```
 
 ### Functional representation of the stories
 
@@ -50,5 +55,6 @@ Bike           --> working?      --> true/false
 DockingStation --> release_bike  --> Bike.new
 DockingStation --> release_bike  --> - guard condition to return nothing when no bikes available
 DockingStation --> dock(bike)    --> bike stored in an instance variable
+DockingStation --> dock(bike)    --> - guard condition to prevent docking when capacity 1 has been reached
 DockingStation --> :bike         --> bike read from the instance variable
 ```
