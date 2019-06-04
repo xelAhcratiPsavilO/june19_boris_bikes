@@ -47,6 +47,11 @@ As a system maintainer,
 So that busy areas can be served more effectively,
 I want to be able to specify a larger capacity when necessary.
 ```
+```
+As a member of the public,
+So that I reduce the chance of getting a broken bike in future,
+I'd like to report a bike as broken when I return it.
+```
 
 ### Functional representation of the stories
 
@@ -54,6 +59,7 @@ Objects | Messages
 ------------- | -------------
 Person |
 Bike | working?
+Bike | report_broken
 DockingStation | release_bike
 DockingStation | dock(bike)
 DockingStation | :bike
@@ -62,6 +68,7 @@ DockingStation | :bike
 ```
 CLASS              METHOD            OUTPUT  
 Bike           --> working?      --> true/false
+Bike           --> report_broken --> false
 DockingStation --> release_bike  --> Bike.new
 DockingStation --> release_bike  --> - guard condition to return nothing when no bikes available
 DockingStation --> dock(bike)    --> bike stored in an instance variable
