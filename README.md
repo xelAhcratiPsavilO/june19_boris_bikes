@@ -52,6 +52,11 @@ As a member of the public,
 So that I reduce the chance of getting a broken bike in future,
 I'd like to report a bike as broken when I return it.
 ```
+```
+As a maintainer of the system,
+So that I can manage broken bikes and not disappoint users,
+I'd like docking stations not to release broken bikes.
+```
 
 ### Functional representation of the stories
 
@@ -71,6 +76,7 @@ Bike           --> working?      --> true/false
 Bike           --> report_broken --> working? => false
 DockingStation --> release_bike  --> Bike.new
 DockingStation --> release_bike  --> - guard condition to return nothing when no bikes available
+DockingStation --> release_bike  --> - guard condition to not to return broken bikes
 DockingStation --> dock(bike)    --> bike stored in an instance variable
 DockingStation --> dock(bike)    --> - guard condition to prevent docking when default capacity has been reached
 DockingStation --> :bike         --> bike read from the instance variable
