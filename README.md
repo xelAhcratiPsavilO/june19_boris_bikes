@@ -68,7 +68,7 @@ DockingStation | :bike
 ```
 CLASS              METHOD            OUTPUT  
 Bike           --> working?      --> true/false
-Bike           --> report_broken --> false
+Bike           --> report_broken --> working? => false
 DockingStation --> release_bike  --> Bike.new
 DockingStation --> release_bike  --> - guard condition to return nothing when no bikes available
 DockingStation --> dock(bike)    --> bike stored in an instance variable
