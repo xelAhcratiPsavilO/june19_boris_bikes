@@ -67,6 +67,11 @@ As a maintainer of the system,
 So that I can manage broken bikes and not disappoint users,
 I'd like vans to take broken bikes from docking stations and deliver them to garages to be fixed.
 ```
+```
+As a maintainer of the system,
+So that I can manage broken bikes and not disappoint users,
+I'd like vans to collect working bikes from garages and distribute them to docking stations.
+```
 
 ### Functional representation of the stories
 
@@ -77,19 +82,52 @@ Bike | working?
 Bike | report_broken
 DockingStation | release_bike
 DockingStation | dock(bike)
-DockingStation | :bike
+DockingStation | :bikes
+DockingStation | :capacity
+Van | release_broken_bike_to(garage)
+Van | dock_broken(bike)from(docking_station)
+Van | release_working_bike_to(docking_station)
+Van | dock_working(bike)from(garage)
+Van | :bikes
+Van | :capacity
+Garage | release_bike
+Garage | dock(bike)
+Garage | :bikes
+Garage | :capacity
 
 ### Diagram of objects and methods
 ```
 CLASS              METHOD            OUTPUT  
-Bike           --> working?      --> true/false
-Bike           --> report_broken --> working? => false
-DockingStation --> release_bike  --> Bike.new
-DockingStation --> release_bike  --> - guard condition to return nothing when no bikes available
-DockingStation --> release_bike  --> - guard condition to not to return broken bikes
-DockingStation --> dock(bike)    --> bike stored in an instance variable
-DockingStation --> dock(bike)    --> - guard condition to prevent docking when default capacity has been reached
-DockingStation --> :bike         --> bike read from the instance variable
+Bike           --> working?                                            --> true/false
+Bike           --> report_broken                                       --> working? => false
+DockingStation --> release_bike                                        --> bike popped from an array
+DockingStation --> release_bike                                        --> - guard condition to return nothing when no bikes available
+DockingStation --> release_bike                                        --> - guard condition to not to return broken bikes
+DockingStation --> dock(bike)                                          --> bike stored in an array
+DockingStation --> dock(bike)                                          --> - guard condition to prevent docking when default capacity has been reached
+DockingStation --> :bikes                                              --> bike read from the array
+DockingStation --> :capacity                                           --> capacity read from the instance variable with the same name
+Van            --> release_broken_bike_to(garage)                      --> bike popped from an array
+Van            --> release_broken_bike_to(garage)                      --> - guard condition to return nothing when no bikes available
+Van            --> release_broken_bike_to(garage)                      --> - guard condition to return nothing when default capacity has been reached
+Van            --> dock_broken(bike)from(docking_station)              --> bike stored in an array
+Van            --> dock_broken(bike)from(docking_station)              --> - guard condition to prevent docking when default capacity has been reached
+Van            --> dock_broken(bike)from(docking_station)              --> - guard condition to prevent docking when bike is working
+Van            --> release_working_bike_to(docking_station)            --> bike popped from an array
+Van            --> release_working_bike_to(docking_station)            --> - guard condition to return nothing when no bikes available
+Van            --> release_working_bike_to(docking_station)            --> - guard condition to return nothing when default capacity has been reached
+Van            --> dock_working(bike)from(garage)                      --> bike stored in an array
+Van            --> dock_working(bike)from(garage)                      --> - guard condition to prevent docking when default capacity has been reached
+Van            --> dock_working(bike)from(garage)                      --> - guard condition to prevent docking when bike is working
+Van            --> :bikes                                              --> bike read from the array
+Van            --> :capacity                                           --> capacity read from the instance variable with the same name
+Garage         --> release_bike                                        --> bike popped from an array
+Garage         --> release_bike                                        --> - guard condition to return nothing when no bikes available
+Garage         --> release_bike                                        --> - guard condition to not to return broken bikes
+Garage         --> dock(bike)                                          --> bike stored in an array
+Garage         --> dock(bike)                                          --> - guard condition to prevent docking when default capacity has been reached
+Garage         --> :bikes                                              --> bike read from the array
+Garage         --> :capacity                                           --> capacity read from the instance
 ```
 
 ### Project Challenges
