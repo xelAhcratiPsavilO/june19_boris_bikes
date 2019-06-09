@@ -94,3 +94,5 @@ Isolating Unit tests with doubles:
 Eventually the system can do pretty much everything the client wants. However, Unit Tests are not isolated. If there was a bug in the `Bike` class, all tests for `DockingStation` class will fail. There could be hours hours spent trying to find a problem thinking that it resides within `docking_station.rb`, when in fact it's located in `bike.rb`. To isolate UnitTests was necessary to use doubles.
 
 Mocking behaviour on doubles with method stubs:
+
+For the doubles to respond to certain methods with predefined values it is necessary to mock behaviour with method stubs. 
