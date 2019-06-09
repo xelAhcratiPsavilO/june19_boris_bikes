@@ -62,6 +62,11 @@ As a maintainer of the system,
 So that I can manage broken bikes and not disappoint users,
 I'd like docking stations to accept returning bikes (broken or not).
 ```
+```
+As a maintainer of the system,
+So that I can manage broken bikes and not disappoint users,
+I'd like vans to take broken bikes from docking stations and deliver them to garages to be fixed.
+```
 
 ### Functional representation of the stories
 
@@ -95,4 +100,4 @@ Eventually the system can do pretty much everything the client wants. However, U
 
 Mocking behaviour on doubles with method stubs:
 
-For the doubles to respond to certain methods with predefined values it is necessary to mock behaviour with method stubs. 
+For the doubles to respond to certain methods with predefined values it is necessary to mock behaviour with method stubs.
